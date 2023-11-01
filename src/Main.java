@@ -40,15 +40,15 @@ public class Main {
                     armory.OutputArmory();
                     break;
                 case 4:
-                    Weapon NewWeapon1 = new Weapon();
-                    Company NewCompany1 = new Company();
-                    NewCompany1.InputCompany();
-                    NewWeapon1.InputWeapon(NewCompany1);
-                    Soldier NewSoldier1 = new Soldier();
-                    NewSoldier1.InputSoldier();
+                    Weapon NewWeaponFirst = new Weapon();
+                    Company NewCompanyFirst = new Company();
+                    NewCompanyFirst.InputCompany();
+                    NewWeaponFirst.InputWeapon(NewCompanyFirst);
+                    Soldier NewSoldierFirst = new Soldier();
+                    NewSoldierFirst.InputSoldier();
                     Control NewOperation = new Control();
-                    NewOperation.InputControl(NewWeapon1,NewSoldier1);
-                    armory.OperationToArmory(operation);
+                    NewOperation.InputControl(NewWeaponFirst,NewSoldierFirst);
+                    armory.OperationToArmory(NewOperation);
                     armory.OutputArmory();
                     break;
                 case 5:

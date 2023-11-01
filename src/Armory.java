@@ -42,16 +42,17 @@ public class Armory {
     }
     void OutputArmory() {
         System.out.println("\nСписок складского оружия:");
-        for (int i = 0; i < this.NumWeapons; i++) {
-            System.out.println("Название: " + this.weapons.get(i).getName() +"\nГод выпуска: " + this.weapons.get(i).getRel_year() + "\nКомпания: " + this.weapons.get(i).company.getName() + "\nДата основания: " + this.weapons.get(i).company.getFound_date());
+        for (int i = 0,j = 1; i < this.NumWeapons; i++) {
+            System.out.println("|" + j++ + "|Название: " + this.weapons.get(i).getName() +"\n   Год выпуска: " + this.weapons.get(i).getRel_year() + "\n   Компания: " + this.weapons.get(i).company.getName() + "\n   Дата основания: " + this.weapons.get(i).company.getFound_date());
+
         }
         System.out.println("\nСписок призванных солдат:");
-        for (int i = 0; i < this.NumSoldiers; i++) {
-            System.out.println("ФИО: " + this.soldiers.get(i).getName() + "\nДата призыва: " + this.soldiers.get(i).getDraft_date() +"\nПрописка по адресу: " + this.soldiers.get(i).getAddress());
+        for (int i = 0,j = 1; i < this.NumSoldiers; i++) {
+            System.out.println("|" + j++ + "|ФИО: " + this.soldiers.get(i).getName() + "\n   Дата призыва: " + this.soldiers.get(i).getDraft_date() +"\n   Прописка по адресу: " + this.soldiers.get(i).getAddress());
         }
         System.out.println("\nОперации на складе:");
-        for (int i = 0; i < this.NumOperations; i++) {
-            System.out.println("Оружие: " + this.operations.get(i).weapon.getName() +"\nСолдат: " + this.operations.get(i).soldier.getName() + "\nДата операции: " + this.operations.get(i).getDate() + "\nВид операции: " + this.operations.get(i).getOperation());
+        for (int i = 0, j = 1; i < this.NumOperations; i++) {
+            System.out.println("|" + j++ + "|Оружие: " + this.operations.get(i).weapon.getName() +"\n   Солдат: " + this.operations.get(i).soldier.getName() + "\n   Дата операции: " + this.operations.get(i).getDate() + "\n   Вид операции: " + this.operations.get(i).getOperation());
         }
         System.out.println(" ");
     }
