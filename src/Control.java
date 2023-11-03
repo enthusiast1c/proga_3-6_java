@@ -4,7 +4,6 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Control {
-    final int LEN = 30;
     final int DATE = 11;
     private String operation;
     private String date;
@@ -41,10 +40,10 @@ public class Control {
         char[] dt;
         do {
             do {
-                System.out.println("Введите дату совершения операции в формате ДД.ММ.ГГГГ:");
+                System.out.println("Введите дату совершения операции в формате ДД/ММ/ГГГГ:");
                 date = sc.nextLine();
                 dt = date.toCharArray();
-            } while (dt[0] < '0' || dt[0] > '3' || dt[1] < '0' || (dt[1] > '1' && dt[0] > '2') || dt[1] > '9' || dt[2] != '.' || dt[3] < '0' || (dt[3] == '1' && dt[4] > '2') || dt[3] > '1' || dt[4] < '0' || (dt[4] > '0' && dt[3] > '2') || dt[4] > '9' || dt[5] != '.' || dt[6] < '0' || dt[6] > '9' || dt[7] < '0' || dt[7] > '9' || dt[8] < '0' || dt[8] > '9' || dt[9] < '0' || dt[9] > '9');
+            } while (dt[0] < '0' || dt[0] > '3' || dt[1] < '0' || (dt[1] > '1' && dt[0] > '2') || dt[1] > '9' || dt[2] != '/' || dt[3] < '0' || (dt[3] == '1' && dt[4] > '2') || dt[3] > '1' || dt[4] < '0' || (dt[4] > '0' && dt[3] > '2') || dt[4] > '9' || dt[5] != '/' || dt[6] < '0' || dt[6] > '9' || dt[7] < '0' || dt[7] > '9' || dt[8] < '0' || dt[8] > '9' || dt[9] < '0' || dt[9] > '9');
         } while (date.length() != 10);
         initArg(operation, date, weapon, soldier);
     }

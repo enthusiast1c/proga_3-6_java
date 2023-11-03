@@ -11,6 +11,8 @@ public class Armory {
     public int NumWeapons = 1;
     public int NumSoldiers = 1;
     public int NumOperations = 1;
+    public String getMilitary(){return military;}
+    public void setMilitary(String military){this.military = military;}
     public Armory() {}
     public Armory(Weapon weapon,Soldier soldier,Control operation,String military){
         initArg(weapon,soldier,operation,military);
@@ -26,8 +28,6 @@ public class Armory {
             this.operations.add(this.NumOperations - 1,operation);
         }
     }
-    public String getMilitary(){return military;}
-    public void setMilitary(String military){this.military = military;}
     public void WeaponToArmory(Weapon weapon){
         this.NumWeapons += 1;
         this.weapons.add(weapon);
@@ -40,27 +40,27 @@ public class Armory {
         this.NumOperations += 1;
         this.operations.add(operation);
     }
+    public void InputArmory(Weapon weapon, Soldier soldier, Control operation) {
+        String military;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите номер ячейки склада (Н-р: А3):");
+        military = sc.nextLine();
+        initArg(weapon, soldier, operation, military);
+    }
     void OutputArmory() {
         System.out.println("\nСписок складского оружия:");
         for (int i = 0,j = 1; i < this.NumWeapons; i++) {
-            System.out.println("|" + j++ + "|Название: " + this.weapons.get(i).getName() +"\n   Год выпуска: " + this.weapons.get(i).getRel_year() + "\n   Компания: " + this.weapons.get(i).company.getName() + "\n   Дата основания: " + this.weapons.get(i).company.getFound_date());
+            System.out.println("|" + j++ + "|Название: " + this.weapons.get(i).getName() +"\n   Год выпуска: " + this.weapons.get(i).getRelease() + "\n   Компания: " + this.weapons.get(i).company.getName() + "\n   Дата основания: " + this.weapons.get(i).company.getFound());
 
         }
         System.out.println("\nСписок призванных солдат:");
         for (int i = 0,j = 1; i < this.NumSoldiers; i++) {
-            System.out.println("|" + j++ + "|ФИО: " + this.soldiers.get(i).getName() + "\n   Дата призыва: " + this.soldiers.get(i).getDraft_date() +"\n   Прописка по адресу: " + this.soldiers.get(i).getAddress());
+            System.out.println("|" + j++ + "|ФИО: " + this.soldiers.get(i).getName() + "\n   Дата призыва: " + this.soldiers.get(i).getDraft() +"\n   Прописка по адресу: " + this.soldiers.get(i).getAddress());
         }
         System.out.println("\nОперации на складе:");
         for (int i = 0, j = 1; i < this.NumOperations; i++) {
             System.out.println("|" + j++ + "|Оружие: " + this.operations.get(i).weapon.getName() +"\n   Солдат: " + this.operations.get(i).soldier.getName() + "\n   Дата операции: " + this.operations.get(i).getDate() + "\n   Вид операции: " + this.operations.get(i).getOperation());
         }
         System.out.println(" ");
-    }
-    public void InputArmory(Weapon weapon, Soldier soldier, Control operation) {
-        String military;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Введите номер ячейки склада (Н-р: ячейка А3):");
-        military = sc.nextLine();
-        initArg(weapon, soldier, operation, military);
     }
 }
