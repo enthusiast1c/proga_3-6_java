@@ -4,10 +4,10 @@ public class Main {
     public static void main(String[] args) {
         Company company = new Company();
         company.InputCompany();
-        Soldier soldier = new Soldier();
-        soldier.InputSoldier();
         Weapon weapon = new Weapon();
         weapon.InputWeapon(company);
+        Soldier soldier = new Soldier();
+        soldier.InputSoldier();
         Control operation = new Control();
         operation.InputControl(weapon,soldier);
         Armory armory = new Armory();

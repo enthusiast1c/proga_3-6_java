@@ -4,19 +4,24 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Control {
-    final int DATE = 11;
+    static final int DATE = 11;
+    private static int NOper = 0;
     private String operation;
     private String date;
     public Weapon weapon;
     public Soldier soldier;
+    public static int getNum(){
+        return NOper;
+    }
     public String getOperation() {return operation;}
     public String getDate() {return date;}
     public void setOperation(String operation) {this.operation = operation;}
     public void setDate(String date) {this.date = date;}
     public void setWeapon(Weapon weapon) {this.weapon = weapon;}
     public void setSoldier(Soldier soldier) {this.soldier = soldier;}
-    public Control() {}
+    public Control() {NOper++;}
     public Control(String operation, String date, Weapon weapon, Soldier soldier) {
+        NOper++;
         initArg(operation,date,weapon,soldier);
     }
     public void initArg(String operation, String date, Weapon weapon, Soldier soldier){

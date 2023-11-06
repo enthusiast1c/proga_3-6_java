@@ -3,7 +3,7 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Company {
-    final int DATE = 11;
+    static final int DATE = 11;
     private String name;
     private String found;
     private String address;

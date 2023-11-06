@@ -48,16 +48,16 @@ public class Armory {
         initArg(weapon, soldier, operation, military);
     }
     void OutputArmory() {
-        System.out.println("\nСписок складского оружия:");
+        System.out.println("\nСписок складского оружия:\n" + "Всего на складе: " + Weapon.getNum());
         for (int i = 0,j = 1; i < this.NumWeapons; i++) {
             System.out.println("|" + j++ + "|Название: " + this.weapons.get(i).getName() +"\n   Год выпуска: " + this.weapons.get(i).getRelease() + "\n   Компания: " + this.weapons.get(i).company.getName() + "\n   Дата основания: " + this.weapons.get(i).company.getFound());
 
         }
-        System.out.println("\nСписок призванных солдат:");
+        System.out.println("\nСписок призванных солдат:\n" + "Всего на складе: " + Soldier.getNum());
         for (int i = 0,j = 1; i < this.NumSoldiers; i++) {
             System.out.println("|" + j++ + "|ФИО: " + this.soldiers.get(i).getName() + "\n   Дата призыва: " + this.soldiers.get(i).getDraft() +"\n   Прописка по адресу: " + this.soldiers.get(i).getAddress());
         }
-        System.out.println("\nОперации на складе:");
+        System.out.println("\nОперации на складе:\n" + "Всего на складе: " + Control.getNum());
         for (int i = 0, j = 1; i < this.NumOperations; i++) {
             System.out.println("|" + j++ + "|Оружие: " + this.operations.get(i).weapon.getName() +"\n   Солдат: " + this.operations.get(i).soldier.getName() + "\n   Дата операции: " + this.operations.get(i).getDate() + "\n   Вид операции: " + this.operations.get(i).getOperation());
         }

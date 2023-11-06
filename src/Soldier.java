@@ -3,10 +3,14 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Soldier {
-    final int DATE = 11;
+    static final int DATE = 11;
+    private static int NSold = 0;
     private String name;
     private String draft;
     private String address;
+    public static int getNum(){
+        return NSold;
+    }
 
     public String getName() {return name;}
     public String getDraft() {return draft;}
@@ -14,13 +18,15 @@ public class Soldier {
     public void setName(String name) {this.name = name;}
     public void setDraft(String draft) {this.draft = draft;}
     public void setAddress(String address) {this.address = address;}
-    public Soldier() {}
+    public Soldier() {NSold++;}
     public Soldier(String name) {
+        NSold++;
         this.name = name;
         this.draft = "11/12/1345";
         this.address = "Летная, 13";
     }
     public Soldier(String name, String draft, String address) {
+        NSold++;
         initArg(name,draft,address);
     }
     public void initArg(String name, String draft, String address) {
