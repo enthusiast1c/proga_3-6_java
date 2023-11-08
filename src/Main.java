@@ -18,7 +18,7 @@ public class Main {
             System.out.println("Создан оружейный склад.");
             int choice;
             do {
-                System.out.println("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Рассчитать процент вооруженности\n |6|Завершение программы\nВаш выбор: ");
+                System.out.println("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Рассчитать индекс вооруженности\n |6|Завершение программы\nВаш выбор: ");
                 choice = sc.nextInt();
             } while (choice < 1 || choice > 6);
             switch (choice) {
@@ -48,6 +48,8 @@ public class Main {
                     NewSoldierFirst.InputSoldier();
                     Control NewOperation = new Control();
                     NewOperation.InputControl(NewWeaponFirst,NewSoldierFirst);
+                    armory.WeaponToArmory(NewWeaponFirst);
+                    armory.SoldierToArmory(NewSoldierFirst);
                     armory.OperationToArmory(NewOperation);
                     armory.OutputArmory();
                     break;

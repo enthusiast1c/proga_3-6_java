@@ -1,5 +1,5 @@
 public class Index {
     static public int Armament(Armory armory){
-        return (int) ((int)((double)(armory.NumOperations * (armory.NumSoldiers * 0.6 + armory.NumWeapons * 0.4))) * 7.5);
+        return (int) ((double) ((armory.NumWeapons + armory.NumSoldiers) * 100)/ armory.NumOperations);
     }
 }
