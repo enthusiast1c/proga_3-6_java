@@ -18,9 +18,9 @@ public class Main {
             System.out.println("Создан оружейный склад.");
             int choice;
             do {
-                System.out.println("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Завершение программы\nВаш выбор: ");
+                System.out.println("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Рассчитать процент вооруженности\n |6|Завершение программы\nВаш выбор: ");
                 choice = sc.nextInt();
-            } while (choice < 1 || choice >5);
+            } while (choice < 1 || choice > 6);
             switch (choice) {
                 case 1:
                     armory.OutputArmory();
@@ -52,6 +52,9 @@ public class Main {
                     armory.OutputArmory();
                     break;
                 case 5:
+                    System.out.println("Вооруженность военской части: " + Index.Armament(armory) + "%\n");
+                    break;
+                case 6:
                     int yesno;
                     do {
                         System.out.println("Вы уверены, что хотите выйти?\n|1|Да\n|2|Нет\nВаш выбор: ");
