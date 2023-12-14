@@ -54,7 +54,7 @@ public class Main {
                     armory.OutputArmory();
                     break;
                 case 5:
-                    System.out.println("Вооруженность военской части: " + Index.Armament(armory) + "%\n");
+                    System.out.println("Вооруженность военской части: " + Index.Armament(armory) + "\n");
                     break;
                 case 6:
                     int yesno;
