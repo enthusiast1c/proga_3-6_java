@@ -22,7 +22,7 @@ public class Main {
             do {
                 System.out.println("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Рассчитать индекс вооруженности\n |6|Организация взвода\n |7|Конструкция try-catch\n |8|Завершение программы\nВаш выбор: ");
                 choice = sc.nextInt();
-            } while (choice < 1 || choice > 7);
+            } while (choice < 1 || choice > 8);
             switch (choice) {
                 case 1:
                     armory.OutputArmory();
