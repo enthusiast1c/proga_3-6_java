@@ -115,12 +115,14 @@ public class Main {
                             platoon.OutputPlatoon();
                         }
                     } while (n != 3);
+                    break;
                 case 7:
                     try{
                         Soldier exsold = new Soldier("271277");
                     }catch(IllegalArgumentException exsold){
                         System.out.println(exsold.getMessage());
                     }
+                    break;
                 case 8:
                     int yesno;
                     do {
