@@ -18,7 +18,7 @@ public class Soldier {
     public void setName(String name) {this.name = name;}
     public void setDraft(String draft) {this.draft = draft;}
     public void setAddress(String address) {this.address = address;}
-    public Soldier() {NSold++;}
+    public Soldier() {}
     public Soldier(String name) {
         NSold++;
         this.name = name;
@@ -40,6 +40,7 @@ public class Soldier {
         }
     }
     public void InputSoldier(){
+        NSold++;
         String name, draft, address;
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите Фамилия И.О. солдата:");

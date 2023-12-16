@@ -17,7 +17,7 @@ public class Weapon {
     public void setRelease(int release) {this.release = release;}
     public void setName(String name) {this.name = name;}
     public void setCompany(Company company) {this.company = company;}
-    public Weapon() {NWeap++;}
+    public Weapon() {}
     public Weapon(Company company) {
         NWeap++;
         this.name = "FAMAS";
@@ -39,6 +39,7 @@ public class Weapon {
         initArg(name,company,release);
     }
     public void InputWeapon(Company company) {
+        NWeap++;
         int release;
         String name;
         Scanner sc = new Scanner(System.in);

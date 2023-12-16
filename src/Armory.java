@@ -40,6 +40,12 @@ public class Armory {
         this.NumOperations += 1;
         this.operations.add(operation);
     }
+    public int GetNumWeapons(){
+        return NumWeapons;
+    }
+    public int GetNumSoldiers(){
+        return NumSoldiers;
+    }
     public void InputArmory(Weapon weapon, Soldier soldier, Control operation) {
         String military;
         Scanner sc = new Scanner(System.in);
