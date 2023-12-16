@@ -2,11 +2,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        try{
-            Soldier exsold = new Soldier("271277");
-        }catch(IllegalArgumentException exsold){
-            System.out.println(exsold.getMessage());
-        }
         Company company = new Company();
         company.InputCompany();
         Weapon weapon = new Weapon();
@@ -25,7 +20,7 @@ public class Main {
             System.out.println("Создан оружейный склад.");
             int choice;
             do {
-                System.out.println("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Рассчитать индекс вооруженности\n |6|Организация взвода\n |7|Завершение программы\nВаш выбор: ");
+                System.out.println("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Рассчитать индекс вооруженности\n |6|Организация взвода\n |7|Конструкция try-catch\n |8|Завершение программы\nВаш выбор: ");
                 choice = sc.nextInt();
             } while (choice < 1 || choice > 7);
             switch (choice) {
@@ -121,6 +116,12 @@ public class Main {
                         }
                     } while (n != 3);
                 case 7:
+                    try{
+                        Soldier exsold = new Soldier("271277");
+                    }catch(IllegalArgumentException exsold){
+                        System.out.println(exsold.getMessage());
+                    }
+                case 8:
                     int yesno;
                     do {
                         System.out.println("Вы уверены, что хотите выйти?\n|1|Да\n|2|Нет\nВаш выбор: ");

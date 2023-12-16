@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
-public class Platoon {
+public class Platoon {//Класс для работы с двумерным массивом
     private int Ntroop;
     private String index;
     private ArrayList<ArrayList<Soldier>> soldiers = new ArrayList<>();

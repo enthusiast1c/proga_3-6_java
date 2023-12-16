@@ -19,7 +19,7 @@ public class Soldier {
     public void setDraft(String draft) {this.draft = draft;}
     public void setAddress(String address) {this.address = address;}
     public Soldier() {}
-    public Soldier(String name) {
+    public Soldier(String name) {//Инструкция throw
         this.name = name;
         for(int i = 0; i < name.length();i++){
             if(Character.isDigit(name.charAt(i))){
