@@ -2,6 +2,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        try{
+            Soldier exsold = new Soldier("271277");
+        }catch(IllegalArgumentException exsold){
+            System.out.println(exsold.getMessage());
+        }
         Company company = new Company();
         company.InputCompany();
         Weapon weapon = new Weapon();
@@ -113,14 +118,6 @@ public class Main {
                         }
                         if (n == 2) {
                             platoon.OutputPlatoon();
-                            /*int troop = platoon.GetNtroop();
-                            if (troop < 0) {
-                                platoon.OutputPlatoon();
-                            }
-                            else {
-                                System.out.println("Роты не сформированы.");
-                            }
-                             */
                         }
                     } while (n != 3);
                 case 7:

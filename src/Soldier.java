@@ -20,10 +20,12 @@ public class Soldier {
     public void setAddress(String address) {this.address = address;}
     public Soldier() {}
     public Soldier(String name) {
-        NSold++;
         this.name = name;
-        this.draft = "11/12/1345";
-        this.address = "Летная, 13";
+        for(int i = 0; i < name.length();i++){
+            if(Character.isDigit(name.charAt(i))){
+                throw new IllegalArgumentException("Неккоректный формат входных данных");
+            }
+        }
     }
     public Soldier(String name, String draft, String address) {
         NSold++;
