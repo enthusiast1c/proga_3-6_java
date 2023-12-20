@@ -11,7 +11,6 @@ public class Soldier {
     public static int getNum(){
         return NSold;
     }
-
     public String getName() {return name;}
     public String getDraft() {return draft;}
     public String getAddress() {return address;}

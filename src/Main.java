@@ -17,29 +17,56 @@ public class Main {
         Platoon platoon;
         int exit = 0;
         do {
-            System.out.println("Создан оружейный склад.");
+            System.out.println("Оружейный склад.");
             int choice;
             do {
-                System.out.println("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Рассчитать индекс вооруженности\n |6|Организация взвода\n |7|Конструкция try-catch\n |8|Завершение программы\nВаш выбор: ");
+                System.out.println("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Рассчитать индекс вооруженности\n |6|Организация взвода\n |7|Конструкция try-catch\n |8|Тестирование клонирования\n |9|Завершение программы\nВаш выбор: ");
                 choice = sc.nextInt();
-            } while (choice < 1 || choice > 8);
+            } while (choice < 1 || choice > 9);
             switch (choice) {
                 case 1:
-                    armory.OutputArmory();
+                    armory.Output();
                     break;
                 case 2:
                     Soldier NewSoldier = new Soldier();
                     NewSoldier.InputSoldier();
                     armory.SoldierToArmory(NewSoldier);
-                    armory.OutputArmory();
+                    armory.Output();
                     break;
                 case 3:
-                    Weapon NewWeapon = new Weapon();
-                    Company NewCompany = new Company();
-                    NewCompany.InputCompany();
-                    NewWeapon.InputWeapon(NewCompany);
-                    armory.WeaponToArmory(NewWeapon);
-                    armory.OutputArmory();
+                    int p;
+                    do {
+                        System.out.println("Добавление снаряжения:\n|1|Добавить оружие\n|2|Добавить оружие с модификацией\n|3|Вернуться назад\nВаш выбор: ");
+                        do {
+                            p = sc.nextInt();
+                        } while (p < 1 || p > 3);
+                        Weapon NewWeapon = new Weapon();
+                        Company NewCompany = new Company();
+                        if (p == 1) {
+                            NewCompany.InputCompany();
+                            NewWeapon.InputWeapon(NewCompany);
+                            armory.WeaponToArmory(NewWeapon);
+                        }
+                        else if (p == 2) {
+                            NewCompany.InputCompany();
+                            WeaponMode weaponmode = new WeaponMode();
+                            weaponmode.InputWeapon(NewCompany);
+                            System.out.println("\nВведите количество модификаций (не более 2)\nВаш выбор: ");
+                            int k;
+                            do {
+                                k = sc.nextInt();
+                            } while (k < 1 || k > 2);
+                            String str;
+                            for (int i = 0; i < k; i++) {
+                                System.out.println("Введите " + (i + 1) + " модификацию:" + "\n");
+                                do{
+                                    str = sc.nextLine();
+                                }while (str.isEmpty());
+                                weaponmode.AddMode(str);
+                            }
+                            armory.WeaponModeToArmory(weaponmode);
+                        }
+                    } while (p != 3);
                     break;
                 case 4:
                     int k;
@@ -49,7 +76,7 @@ public class Main {
                     } while (k < 1 || k > 2);
                     Weapon w = new Weapon();
                     if (k == 1) {
-                        armory.OutputArmory();
+                        armory.Output();
                         System.out.println("\nВведите номер оружия из списка: ");
                         int NumOfWeapon;
                         do {
@@ -68,7 +95,7 @@ public class Main {
                         k = sc.nextInt();
                     } while (k < 1 || k > 2);
                     if (k == 1) {
-                        armory.OutputArmory();
+                        armory.Output();
                         System.out.println("\nВведите номер солдата из списка: ");
                         int NumOfSoldier;
                         do {
@@ -102,7 +129,7 @@ public class Main {
                                 id = sc.nextInt();
                                 id -= 1;
                             } while (id < 0 || id > platoon.GetNtroop());
-                            armory.OutputArmory();
+                            armory.Output();
                             System.out.println("\nВведите номер солдата из списка: ");
                             int NumOfSoldier;
                             do {
@@ -118,12 +145,35 @@ public class Main {
                     break;
                 case 7:
                     try{
-                        Soldier exsold = new Soldier("271277");
-                    }catch(IllegalArgumentException exsold){
-                        System.out.println(exsold.getMessage());
+                        Soldier exs = new Soldier("271277");
+                    }catch(IllegalArgumentException exs){
+                        System.out.println(exs.getMessage());
                     }
                     break;
                 case 8:
+                    Company StartCompany = new Company();
+                    StartCompany.setName("Степанидзе");
+                    StartCompany.setAddress("Тамбовская,13");
+                    StartCompany.setFound("27/12/1977");
+                    Weapon StartWeapon = new Weapon();
+                    StartWeapon.setName("M4A1-S");
+                    StartWeapon.setRelease(2000);
+                    StartWeapon.setCompany(StartCompany);
+                    try {
+                        System.out.println("\nИзначальное оружие : " + StartWeapon.company.getName());
+                        System.out.println("Меняем компанию у изначального оружия.");
+                        Weapon shallowClonedWeapon = StartWeapon.shallowClone();
+                        Weapon deepClonedWeapon = StartWeapon.deepClone();
+                        StartCompany.setName("Титикатзе");
+                        StartWeapon.setCompany(StartCompany);
+                        System.out.println("Изначальное оружие : " + StartWeapon.company.getName());
+                        System.out.println("Мелкое клонирование(название клон-компании): " + shallowClonedWeapon.company.getName());
+                        System.out.println("Глубокое клонирование(название клон-компании): " + deepClonedWeapon.company.getName() + "\n");
+                    } catch (CloneNotSupportedException e) {
+                        System.out.println("Ошибка клонирования!");
+                    }
+                    break;
+                case 9:
                     int yesno;
                     do {
                         System.out.println("Вы уверены, что хотите выйти?\n|1|Да\n|2|Нет\nВаш выбор: ");

@@ -3,11 +3,13 @@ import java.util.Scanner;
 
 import static java.lang.System.exit;
 
-public class Armory {
+public class Armory implements OutputAll{
     private String military;
     public ArrayList<Weapon> weapons = new ArrayList<>();
     public ArrayList<Control> operations = new ArrayList<>();
     public ArrayList<Soldier> soldiers = new ArrayList<>();
+    public ArrayList<WeaponMode> weaponmods = new ArrayList<>();
+
     public int NumWeapons = 1;
     public int NumSoldiers = 1;
     public int NumOperations = 1;
@@ -40,6 +42,10 @@ public class Armory {
         this.NumOperations += 1;
         this.operations.add(operation);
     }
+    public void WeaponModeToArmory(WeaponMode weaponmode) {
+        this.NumWeapons += 1;
+        this.weaponmods.add(weaponmode);
+    }
     public int GetNumWeapons(){
         return NumWeapons;
     }
@@ -53,11 +59,18 @@ public class Armory {
         military = sc.nextLine();
         initArg(weapon, soldier, operation, military);
     }
-    void OutputArmory() {
-        System.out.println("\nСписок складского оружия:\n" + "Всего на складе: " + Weapon.getNum());
-        for (int i = 0,j = 1; i < this.NumWeapons; i++) {
-            System.out.println("|" + j++ + "|Название: " + this.weapons.get(i).getName() +"\n   Год выпуска: " + this.weapons.get(i).getRelease() + "\n   Компания: " + this.weapons.get(i).company.getName() + "\n   Дата основания: " + this.weapons.get(i).company.getFound());
-
+    public void Output() {
+        System.out.println("\nСписок складского оружия:\n" + "Всего на складе: " + (Weapon.getNum()-WeaponMode.getCountMode()));
+        for (int i = 0; i < (Weapon.getNum() - WeaponMode.getCountMode()); i++) {
+            System.out.print("|" + (i + 1) + "|");
+            this.weapons.get(i).Output();
+        }
+        System.out.println("Список складской модификации:\n" + "Всего на складе: " + WeaponMode.getCountMode());
+        if (WeaponMode.getCountMode() != 0) {
+            for (int i = 0; i < WeaponMode.getCountMode(); i++) {
+                System.out.print("|" + (i + 1) + "|");
+                this.weaponmods.get(i).Output();
+            }
         }
         System.out.println("\nСписок призванных солдат:\n" + "Всего на складе: " + Soldier.getNum());
         for (int i = 0,j = 1; i < this.NumSoldiers; i++) {

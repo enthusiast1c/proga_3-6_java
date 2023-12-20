@@ -2,15 +2,14 @@ import java.util.Scanner;
 
 import static java.lang.System.exit;
 
-public class Weapon {
-    private static int NWeap = 0;
-    private int release;
-    private String name;
-    public Company company;
+public class Weapon implements OutputAll, Cloneable{
+    protected static int NWeap = 0;
+    protected int release;
+    protected String name;
+    protected Company company;
     public static int getNum(){
         return NWeap;
     }
-
     public int getRelease() {return release;}
     public String getName() {return name;}
     public Company getCompany() {return company;}
@@ -38,6 +37,19 @@ public class Weapon {
         NWeap++;
         initArg(name,company,release);
     }
+
+    // Мелкое клонирование
+    public Weapon shallowClone() throws CloneNotSupportedException {
+        return (Weapon) super.clone();
+    }
+
+    // Глубокое клонирование
+    public Weapon deepClone() throws CloneNotSupportedException {
+        Weapon clonedWeapon = (Weapon) super.clone();
+        clonedWeapon.setCompany((Company) clonedWeapon.getCompany().clone());
+        return clonedWeapon;
+    }
+
     public void InputWeapon(Company company) {
         NWeap++;
         int release;
@@ -53,5 +65,8 @@ public class Weapon {
             }
         } while (release < 1132);
         initArg(name, company, release);
+    }
+    public void Output() {
+        System.out.println("Название: " + this.name + "\n   Год выпуска: " + release + "\n   Компания: " + company.getName() + "\n   Дата основания: " + company.getFound() +"\n");
     }
 }

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 import static java.lang.System.exit;
 
-public class Company {
+public class Company extends AbstractCompany<String,String,String> implements Cloneable{
     static final int DATE = 11;
     private String name;
     private String found;
@@ -48,5 +48,17 @@ public class Company {
         System.out.println("Введите адрес компании:");
         address = sc.nextLine();
         this.initArg(name, found, address);
+    }
+    //Клонирование
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+    public Company deepClone() throws CloneNotSupportedException {
+        Company clonedCompany = (Company) super.clone();
+        clonedCompany.setName(new String(this.name));
+        clonedCompany.setAddress(new String(this.address));
+        clonedCompany.setFound(new String(this.found));
+        return clonedCompany;
     }
 }
