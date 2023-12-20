@@ -170,7 +170,7 @@ public class Main {
                         System.out.println("Мелкое клонирование(название клон-компании): " + shallowClonedWeapon.company.getName());
                         System.out.println("Глубокое клонирование(название клон-компании): " + deepClonedWeapon.company.getName() + "\n");
                     } catch (CloneNotSupportedException e) {
-                        System.out.println("Ошибка клонирования!");
+                        System.out.println("Клонирование невозможно!");
                     }
                     break;
                 case 9:
