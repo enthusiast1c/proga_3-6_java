@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
+import java.util.Comparator;
 
 public class Armory implements OutputAll{
     private String military;
@@ -58,6 +59,32 @@ public class Armory implements OutputAll{
         System.out.println("Введите номер ячейки склада (Н-р: А3):");
         military = sc.nextLine();
         initArg(weapon, soldier, operation, military);
+    }
+    //Сортировка оружия по году выпуска
+    public void SortWeapon() {
+        System.out.println("(\"Выполнение сортировки оружия.");
+        weapons.sort(Comparator.comparingInt(Weapon::getRelease));
+        System.out.println("Выполнение сортировки оружия с модификацией");
+        weaponmods.sort(Comparator.comparingInt(WeaponMode::getRelease));
+    }
+    //Поиск оружия,оружия с модификацией по названию
+    public int SearchWeapon(String name) {
+        for (Weapon actualweapon : weapons) {
+            if (actualweapon.getName().equals(name)) {
+                System.out.println("Найденное оружие по запросу: ");
+                actualweapon.Output();
+                return 1;
+            }
+        }
+        for (WeaponMode actualmode : weaponmods) {
+            if (actualmode.getName().equals(name)) {
+                System.out.println("Найденное оружие с модификацией по запросу: ");
+                actualmode.Output();
+                return 1;
+            }
+        }
+        System.out.println("Оружие с таким названием отсутсвтует\n");
+        return -1;
     }
     public void Output() {
         System.out.println("\nСписок складского оружия:\n" + "Всего на складе: " + (Weapon.getNum()-WeaponMode.getCountMode()));

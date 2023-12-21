@@ -20,9 +20,9 @@ public class Main {
             System.out.println("Оружейный склад.");
             int choice;
             do {
-                System.out.println("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Рассчитать индекс вооруженности\n |6|Организация взвода\n |7|Конструкция try-catch\n |8|Тестирование клонирования\n |9|Завершение программы\nВаш выбор: ");
+                System.out.print("Выберите действие:\n |1|Вывести оружейный склад\n |2|Добавить солдата\n |3|Добавить оружие\n |4|Добавить выдачу/сдачу оружия\n |5|Рассчитать индекс вооруженности\n |6|Организация взвода\n |7|Конструкция try-catch\n |8|Тестирование клонирования\n |9|Организация сортировки/поиска оружия\n |10|Завершение программы\nВаш выбор: ");
                 choice = sc.nextInt();
-            } while (choice < 1 || choice > 9);
+            } while (choice < 1 || choice > 10);
             switch (choice) {
                 case 1:
                     armory.Output();
@@ -36,7 +36,7 @@ public class Main {
                 case 3:
                     int p;
                     do {
-                        System.out.println("Добавление снаряжения:\n|1|Добавить оружие\n|2|Добавить оружие с модификацией\n|3|Вернуться назад\nВаш выбор: ");
+                        System.out.print("Добавление снаряжения:\n|1|Добавить оружие\n|2|Добавить оружие с модификацией\n|3|Вернуться назад\nВаш выбор: ");
                         do {
                             p = sc.nextInt();
                         } while (p < 1 || p > 3);
@@ -51,7 +51,7 @@ public class Main {
                             NewCompany.InputCompany();
                             WeaponMode weaponmode = new WeaponMode();
                             weaponmode.InputWeapon(NewCompany);
-                            System.out.println("\nВведите количество модификаций (не более 2)\nВаш выбор: ");
+                            System.out.print("\nВведите количество модификаций (не более 2)\nВаш выбор: ");
                             int k;
                             do {
                                 k = sc.nextInt();
@@ -71,13 +71,13 @@ public class Main {
                 case 4:
                     int k;
                     do {
-                        System.out.println("Желаете использовать имеющееся оружие?\n|1|Да\n|2|Нет\nВаш выбор: ");
+                        System.out.print("Желаете использовать имеющееся оружие?\n|1|Да\n|2|Нет\nВаш выбор: ");
                         k = sc.nextInt();
                     } while (k < 1 || k > 2);
                     Weapon w = new Weapon();
                     if (k == 1) {
                         armory.Output();
-                        System.out.println("\nВведите номер оружия из списка: ");
+                        System.out.print("\nВведите номер оружия из списка: ");
                         int NumOfWeapon;
                         do {
                             NumOfWeapon = sc.nextInt();
@@ -90,13 +90,13 @@ public class Main {
                         w.InputWeapon(NewCompanyFirst);
                         armory.WeaponToArmory(w);
                     }
-                    System.out.println("\nЖелаете использовать имеющегося солдата ?\n|1|Да\n|2|Нет\nВаш выбор: ");
+                    System.out.print("\nЖелаете использовать имеющегося солдата ?\n|1|Да\n|2|Нет\nВаш выбор: ");
                     do {
                         k = sc.nextInt();
                     } while (k < 1 || k > 2);
                     if (k == 1) {
                         armory.Output();
-                        System.out.println("\nВведите номер солдата из списка: ");
+                        System.out.print("\nВведите номер солдата из списка: ");
                         int NumOfSoldier;
                         do {
                             NumOfSoldier = sc.nextInt();
@@ -118,7 +118,7 @@ public class Main {
                     int n;
                     platoon = new Platoon();
                     do {
-                        System.out.println("\nОрганизация взвода.Выберите действие:\n\n|1|Добавить солдата\n|2|Вывести взвод\n|3|Вернуться назад\n\nВаш выбор: ");
+                        System.out.print("\nОрганизация взвода.Выберите действие:\n\n|1|Добавить солдата\n|2|Вывести взвод\n|3|Вернуться назад\n\nВаш выбор: ");
                         do {
                             n = sc.nextInt();
                         } while (n < 1 || n > 3);
@@ -174,6 +174,28 @@ public class Main {
                     }
                     break;
                 case 9:
+                    do {
+                        System.out.print("Организация склада.Выберите действие:\n|1|Сортировать оружие по году\n|2|Поиск оружия\n|3|Вернуться назад\nВаш выбор: ");
+                        do {
+                            n = sc.nextInt();
+                        } while (n < 1 || n > 3);
+                        if (n == 1) {
+                            armory.SortWeapon();
+                            armory.Output();
+                            System.out.println("Завершение сортировки.\n");
+                        }
+                        if (n == 2) {
+                            System.out.println("Введите название для поиска: ");
+                            String str;
+                            do {
+                                str = sc.next();
+                            } while (str.isEmpty());
+                            armory.SearchWeapon(str);
+                            System.out.println("Завершение поиска.\n");
+                        }
+                    } while (n != 3);
+                    break;
+                case 10:
                     int yesno;
                     do {
                         System.out.println("Вы уверены, что хотите выйти?\n|1|Да\n|2|Нет\nВаш выбор: ");
